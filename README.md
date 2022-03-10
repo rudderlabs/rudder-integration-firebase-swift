@@ -1,43 +1,41 @@
-<p align="center">
-  <a href="https://rudderstack.com/">
-    <img src="https://user-images.githubusercontent.com/59817155/121357083-1c571300-c94f-11eb-8cc7-ce6df13855c9.png">
-  </a>
-</p>
+# What is RudderStack?
 
-<p align="center"><b>The Customer Data Platform for Developers</b></p>
+[RudderStack](https://rudderstack.com/) is a **customer data pipeline tool** for collecting, routing and processing data from your websites, apps, cloud tools, and data warehouse.
 
-<p align="center">
-  <b>
-    <a href="https://rudderstack.com">Website</a>
-    ·
-    <a href="">Documentation</a>
-    ·
-    <a href="https://rudderstack.com/join-rudderstack-slack-community">Community Slack</a>
-  </b>
-</p>
+With RudderStack, you can build customer data pipelines that connect your whole customer data stack and then make them smarter by triggering enrichment and activation in customer tools based on analysis in your data warehouse. Its easy-to-use SDKs and event source integrations, Cloud Extract integrations, transformations, and expansive library of destination and warehouse integrations makes building customer data pipelines for both event streaming and cloud-to-warehouse ELT simple. 
 
----
+| Try **RudderStack Cloud Free** - a no time limit, no credit card required, completely free tier of [RudderStack Cloud](https://resources.rudderstack.com/rudderstack-cloud). Click [here](https://app.rudderlabs.com/signup?type=freetrial) to start building a smarter customer data pipeline today, with RudderStack Cloud Free. |
+|:------|
 
-# \*\*Repo Name\*\*
+Questions? Please join our [Slack channel](https://resources.rudderstack.com/join-rudderstack-slack) or read about us on [Product Hunt](https://www.producthunt.com/posts/rudderstack).
 
-\*\*Repo description\*\*
+## Integrating Firebase with the RudderStack iOS SDK
 
-## Overview
+1. Add [Firebase](http://firebase.google.com) as a destination in the [RudderStack dashboard](https://app.rudderstack.com/).
 
-\*\*Describe what the software does.\*\*
+2. Rudder-Firebase is available through [CocoaPods](https://cocoapods.org). To install it, add the following line to your Podfile and followed by `pod install`:
 
-## Features
+```ruby
+pod 'Rudder-Firebase'
+```
 
-\*\*Describe the key features, if necessary.\*\*
+3. Download the `GoogleService-Info.plist` from your Firebase console and put it in your project.
 
-## Getting started
+## Initializing ```RudderClient```
 
-\*\*Describe how to use the software.\*\*
+Put this code in your ```AppDelegate.m``` file under the method ```didFinishLaunchingWithOptions```
+```
+RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
+[builder withDataPlaneUrl:DATA_PLANE_URL];
+[builder withFactory:[RudderFirebaseFactory instance]];
+[builder withLoglevel:RSLogLevelDebug];
+[RSClient getInstance:WRITE_KEY config:[builder build]];
+```
 
-## Contribute
+## Sending Events
 
-We would love to see you contribute to RudderStack. Get more information on how to contribute [**here**](CONTRIBUTING.md).
+Follow the steps from the [RudderStack iOS SDK](https://github.com/rudderlabs/rudder-sdk-ios#sending-events) repo.
 
-## License
+## Contact Us
 
-The RudderStack \*\*software name\*\* is released under the [**MIT License**](https://opensource.org/licenses/MIT).
+If you come across any issues while configuring or using this integration, please feel free to start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
