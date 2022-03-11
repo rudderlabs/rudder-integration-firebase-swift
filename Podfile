@@ -7,14 +7,20 @@ def shared_pods
     pod 'RudderStack', :path => '~/Documents/Rudder/RudderStack-Cocoa/'
 end
 
-target 'SampleiOSObjC' do
-    project 'Examples/SampleiOSObjC/SampleiOSObjC.xcodeproj'
-    shared_pods
-    pod 'RudderFirebase', :path => '.'
-end
-
 target 'RudderFirebase' do
     project 'RudderFirebase.xcodeproj'
     shared_pods
     pod 'Firebase/Analytics', '8.12.1'
+end
+
+target 'SampleAppObjC' do
+    project 'Examples/SampleAppObjC/SampleAppObjC.xcodeproj'
+    shared_pods
+    pod 'RudderFirebase', :path => '.'
+end
+
+target 'SampleAppSwift' do
+    project 'Examples/SampleAppSwift/SampleAppSwift.xcodeproj'
+    shared_pods
+    pod 'RudderFirebase', :path => '.'
 end

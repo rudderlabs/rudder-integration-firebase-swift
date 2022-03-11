@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CB5D3209E78A7EB26702D7A8 /* Pods_RudderFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44CBC1F76920F756EBA8755B /* Pods_RudderFirebase.framework */; };
+		7890A0BB4F4F7B46BB934F7D /* Pods_RudderFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB59FF4DB04BFC090CC5F8DD /* Pods_RudderFirebase.framework */; };
 		ED2A28F82770570400646788 /* RudderFirebase.h in Headers */ = {isa = PBXBuildFile; fileRef = ED2A28F72770570400646788 /* RudderFirebase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EDF68FE727D1FD620005AAC6 /* RSFirebaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF68FE627D1FD620005AAC6 /* RSFirebaseDestination.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		44CBC1F76920F756EBA8755B /* Pods_RudderFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RudderFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F21608993E6BDAC5AE89DBC /* Pods-RudderFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RudderFirebase.release.xcconfig"; path = "Target Support Files/Pods-RudderFirebase/Pods-RudderFirebase.release.xcconfig"; sourceTree = "<group>"; };
-		616F843D416C99EE651A3FBD /* Pods-RudderFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RudderFirebase.debug.xcconfig"; path = "Target Support Files/Pods-RudderFirebase/Pods-RudderFirebase.debug.xcconfig"; sourceTree = "<group>"; };
+		D17491FCEE81017364F1CF50 /* Pods-RudderFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RudderFirebase.debug.xcconfig"; path = "Target Support Files/Pods-RudderFirebase/Pods-RudderFirebase.debug.xcconfig"; sourceTree = "<group>"; };
+		E2857E323C88372B617DA912 /* Pods-RudderFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RudderFirebase.release.xcconfig"; path = "Target Support Files/Pods-RudderFirebase/Pods-RudderFirebase.release.xcconfig"; sourceTree = "<group>"; };
+		EB59FF4DB04BFC090CC5F8DD /* Pods_RudderFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RudderFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED2A28EB2770560400646788 /* RudderFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RudderFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED2A28F72770570400646788 /* RudderFirebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RudderFirebase.h; sourceTree = "<group>"; };
 		ED2A28FA2770591E00646788 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -30,7 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB5D3209E78A7EB26702D7A8 /* Pods_RudderFirebase.framework in Frameworks */,
+				7890A0BB4F4F7B46BB934F7D /* Pods_RudderFirebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,16 +40,16 @@
 		208F25C796D8593BF8DAB48E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				616F843D416C99EE651A3FBD /* Pods-RudderFirebase.debug.xcconfig */,
-				4F21608993E6BDAC5AE89DBC /* Pods-RudderFirebase.release.xcconfig */,
+				D17491FCEE81017364F1CF50 /* Pods-RudderFirebase.debug.xcconfig */,
+				E2857E323C88372B617DA912 /* Pods-RudderFirebase.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		D852B2980DF224955AB18C52 /* Frameworks */ = {
+		506F4095775930F3C0FE2649 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				44CBC1F76920F756EBA8755B /* Pods_RudderFirebase.framework */,
+				EB59FF4DB04BFC090CC5F8DD /* Pods_RudderFirebase.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -64,7 +64,7 @@
 				ED2A28F52770570400646788 /* Sources */,
 				ED2A28EC2770560400646788 /* Products */,
 				208F25C796D8593BF8DAB48E /* Pods */,
-				D852B2980DF224955AB18C52 /* Frameworks */,
+				506F4095775930F3C0FE2649 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,7 +119,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED2A28F22770560400646788 /* Build configuration list for PBXNativeTarget "RudderFirebase" */;
 			buildPhases = (
-				6984F4729E36F73C26C9AC27 /* [CP] Check Pods Manifest.lock */,
+				923654D37177FDE754ACC4AE /* [CP] Check Pods Manifest.lock */,
 				ED2A28E62770560400646788 /* Headers */,
 				ED2A28E72770560400646788 /* Sources */,
 				ED2A28E82770560400646788 /* Frameworks */,
@@ -178,7 +178,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6984F4729E36F73C26C9AC27 /* [CP] Check Pods Manifest.lock */ = {
+		923654D37177FDE754ACC4AE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -338,7 +338,7 @@
 		};
 		ED2A28F32770560400646788 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 616F843D416C99EE651A3FBD /* Pods-RudderFirebase.debug.xcconfig */;
+			baseConfigurationReference = D17491FCEE81017364F1CF50 /* Pods-RudderFirebase.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -370,7 +370,7 @@
 		};
 		ED2A28F42770560400646788 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F21608993E6BDAC5AE89DBC /* Pods-RudderFirebase.release.xcconfig */;
+			baseConfigurationReference = E2857E323C88372B617DA912 /* Pods-RudderFirebase.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
