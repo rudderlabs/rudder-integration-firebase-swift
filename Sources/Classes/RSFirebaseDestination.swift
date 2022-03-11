@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Rudder
+import RudderStack
 import FirebaseAnalytics
 import FirebaseCore
 
@@ -45,56 +45,58 @@ class RSFirebaseDestination: RSDestinationPlugin {
     func track(message: TrackMessage) -> TrackMessage? {
         var firebaseEvent: String?
         var params: [String: Any]?
-        if let rudderEvent = message.event {
-            if rudderEvent == "Application Opened" {
-                firebaseEvent = AnalyticsEventAppOpen
-            } else if let event = RSFirebaseDestination.getFirebaseECommerceEvent(from: rudderEvent) {
-                firebaseEvent = event
-                switch firebaseEvent {
-                case AnalyticsEventShare:
-                    if let cartId = message.properties?["cart_id"] {
-                        params?[AnalyticsParameterItemID] = cartId
-                    } else if let productId = message.properties?["product_id"] {
-                        params?[AnalyticsParameterItemID] = productId
-                    }
-                case AnalyticsEventViewPromotion, AnalyticsEventSelectPromotion:
-                    if let name = message.properties?["name"] {
-                        params?[AnalyticsParameterPromotionName] = name
-                    }
-                case RSECommerceConstants.ECommProductShared:
-                    params?[AnalyticsParameterContentType] = "product"
-                case RSECommerceConstants.ECommCartShared:
-                    params?[AnalyticsParameterContentType] = "cart"
-                case AnalyticsEventSelectContent:
-                    if let productId = message.properties?["product_id"] {
-                        params?[AnalyticsParameterItemID] = productId
-                    }
-                    params?[AnalyticsParameterContentType] = "product"
-                default:
-                    break
+        if message.event == "Application Opened" {
+            firebaseEvent = AnalyticsEventAppOpen
+        } else if let event = RSFirebaseDestination.getFirebaseECommerceEvent(from: message.event) {
+            firebaseEvent = event
+            switch firebaseEvent {
+            case AnalyticsEventShare:
+                if let cartId = message.properties?["cart_id"] {
+                    params?[AnalyticsParameterItemID] = cartId
+                } else if let productId = message.properties?["product_id"] {
+                    params?[AnalyticsParameterItemID] = productId
                 }
-            } else {
-                firebaseEvent = RSFirebaseDestination.getTrimKey(rudderEvent)
-            }
-            if let event = firebaseEvent {
-                if let properties = message.properties {
-                    params?.merge(dict: RSFirebaseDestination.configure(properties: properties))
+            case AnalyticsEventViewPromotion, AnalyticsEventSelectPromotion:
+                if let name = message.properties?["name"] {
+                    params?[AnalyticsParameterPromotionName] = name
                 }
-                FirebaseAnalytics.Analytics.logEvent(event, parameters: params)
+            case RSECommerceConstants.ECommProductShared:
+                params?[AnalyticsParameterContentType] = "product"
+            case RSECommerceConstants.ECommCartShared:
+                params?[AnalyticsParameterContentType] = "cart"
+            case AnalyticsEventSelectContent:
+                if let productId = message.properties?["product_id"] {
+                    params?[AnalyticsParameterItemID] = productId
+                }
+                params?[AnalyticsParameterContentType] = "product"
+            default:
+                break
             }
+        } else {
+            firebaseEvent = RSFirebaseDestination.getTrimKey(message.event)
+        }
+        if let event = firebaseEvent {
+            if let properties = message.properties {
+                params?.merge(dict: RSFirebaseDestination.configure(properties: properties))
+            }
+            FirebaseAnalytics.Analytics.logEvent(event, parameters: params)
         }
         return message
     }
     
     func screen(message: ScreenMessage) -> ScreenMessage? {
-        if let event = message.name, event.count > 0 {
-            var params: [String: Any] = [AnalyticsParameterScreenName: event]
+        if message.name.count > 0 {
+            var params: [String: Any] = [AnalyticsParameterScreenName: message.name]
             if let properties = message.properties {
                 params.merge(dict: RSFirebaseDestination.configure(properties: properties))
             }
             FirebaseAnalytics.Analytics.logEvent(AnalyticsEventScreenView, parameters: params)
         }
         return message
+    }
+    
+    func reset() {
+        FirebaseAnalytics.Analytics.setUserID(nil)        
     }
 }
 

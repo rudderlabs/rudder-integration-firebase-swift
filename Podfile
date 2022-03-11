@@ -1,10 +1,10 @@
 workspace 'RudderFirebase.xcworkspace'
 use_frameworks!
 inhibit_all_warnings!
-platform :ios, '10.0'
+platform :ios, '12.0'
 
 def shared_pods
-    pod 'Rudder', :path => '~/Documents/Rudder/RudderStack-Cocoa/'
+    pod 'RudderStack', :path => '~/Documents/Rudder/RudderStack-Cocoa/'
 end
 
 target 'SampleiOSObjC' do

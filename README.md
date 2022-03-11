@@ -13,23 +13,22 @@ Questions? Please join our [Slack channel](https://resources.rudderstack.com/joi
 
 1. Add [Firebase](http://firebase.google.com) as a destination in the [RudderStack dashboard](https://app.rudderstack.com/).
 
-2. Rudder-Firebase is available through [CocoaPods](https://cocoapods.org). To install it, add the following line to your Podfile and followed by `pod install`:
+2. RudderFirebase is available through [CocoaPods](https://cocoapods.org). To install it, add the following line to your Podfile and followed by `pod install`:
 
 ```ruby
-pod 'Rudder-Firebase'
+pod 'RudderFirebase'
 ```
 
 3. Download the `GoogleService-Info.plist` from your Firebase console and put it in your project.
 
-## Initializing ```RudderClient```
+## Initializing ```RSClient```
 
 Put this code in your ```AppDelegate.m``` file under the method ```didFinishLaunchingWithOptions```
 ```
-RSConfigBuilder *builder = [[RSConfigBuilder alloc] init];
-[builder withDataPlaneUrl:DATA_PLANE_URL];
-[builder withFactory:[RudderFirebaseFactory instance]];
-[builder withLoglevel:RSLogLevelDebug];
-[RSClient getInstance:WRITE_KEY config:[builder build]];
+RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
+[config dataPlaneURL:DATA_PLANE_URL];
+RSClient *client = [[RSClient alloc] initWithConfig:config];
+[client addWithDestination:[[RudderFirebaseDestination alloc] init]];
 ```
 
 ## Sending Events
