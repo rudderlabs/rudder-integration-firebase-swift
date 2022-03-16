@@ -26,9 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         client = RSClient(config: config)
 
-        client?.add(destination: RudderFirebaseDestination())
-        client?.track("Track 1")
-        
+        client?.add(destination: RudderFirebaseDestination())        
         return true
     }
 

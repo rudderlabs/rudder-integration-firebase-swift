@@ -24,3 +24,8 @@ target 'SampleAppSwift' do
     shared_pods
     pod 'RudderFirebase', :path => '.'
 end
+
+target 'RudderFirebaseTests' do
+    shared_pods
+    pod 'RudderFirebase', :path => '.'
+end
