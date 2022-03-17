@@ -7,17 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E148FE66AF765A558D66E545 /* Pods_RudderFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 973F4D4BB439F63413AF35AA /* Pods_RudderFirebase.framework */; };
 		ED2A28F82770570400646788 /* RudderFirebase.h in Headers */ = {isa = PBXBuildFile; fileRef = ED2A28F72770570400646788 /* RudderFirebase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EDF68FE727D1FD620005AAC6 /* RSFirebaseDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF68FE627D1FD620005AAC6 /* RSFirebaseDestination.swift */; };
-		F2594B79846D92641BF28A32 /* Pods_RudderFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E816D6F9575D2F8B0A8B3195 /* Pods_RudderFirebase.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6E052D118B7FE0B3635784E1 /* Pods-RudderFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RudderFirebase.debug.xcconfig"; path = "Target Support Files/Pods-RudderFirebase/Pods-RudderFirebase.debug.xcconfig"; sourceTree = "<group>"; };
-		94A90BE12EB5ECB7D820CBCE /* Pods-RudderFirebaseTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RudderFirebaseTests.debug.xcconfig"; path = "Target Support Files/Pods-RudderFirebaseTests/Pods-RudderFirebaseTests.debug.xcconfig"; sourceTree = "<group>"; };
-		973C4F63504BDC88BBCA50B2 /* Pods-RudderFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RudderFirebase.release.xcconfig"; path = "Target Support Files/Pods-RudderFirebase/Pods-RudderFirebase.release.xcconfig"; sourceTree = "<group>"; };
-		E816D6F9575D2F8B0A8B3195 /* Pods_RudderFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RudderFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBE7F8157C54D38E98047AFF /* Pods_RudderFirebaseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RudderFirebaseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2EB7A127879315021C4F40F7 /* Pods-RudderFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RudderFirebase.debug.xcconfig"; path = "Target Support Files/Pods-RudderFirebase/Pods-RudderFirebase.debug.xcconfig"; sourceTree = "<group>"; };
+		6910E4D20FA749A878453386 /* Pods-RudderFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RudderFirebase.release.xcconfig"; path = "Target Support Files/Pods-RudderFirebase/Pods-RudderFirebase.release.xcconfig"; sourceTree = "<group>"; };
+		973F4D4BB439F63413AF35AA /* Pods_RudderFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RudderFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED2A28EB2770560400646788 /* RudderFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RudderFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED2A28F72770570400646788 /* RudderFirebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RudderFirebase.h; sourceTree = "<group>"; };
 		ED2A28FA2770591E00646788 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -25,7 +23,6 @@
 		ED2A28FC2770591E00646788 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ED2A28FD2770591E00646788 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EDF68FE627D1FD620005AAC6 /* RSFirebaseDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSFirebaseDestination.swift; sourceTree = "<group>"; };
-		FC44C98FCC78C0EDCDF531FA /* Pods-RudderFirebaseTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RudderFirebaseTests.release.xcconfig"; path = "Target Support Files/Pods-RudderFirebaseTests/Pods-RudderFirebaseTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2594B79846D92641BF28A32 /* Pods_RudderFirebase.framework in Frameworks */,
+				E148FE66AF765A558D66E545 /* Pods_RudderFirebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,19 +40,16 @@
 		208F25C796D8593BF8DAB48E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6E052D118B7FE0B3635784E1 /* Pods-RudderFirebase.debug.xcconfig */,
-				973C4F63504BDC88BBCA50B2 /* Pods-RudderFirebase.release.xcconfig */,
-				94A90BE12EB5ECB7D820CBCE /* Pods-RudderFirebaseTests.debug.xcconfig */,
-				FC44C98FCC78C0EDCDF531FA /* Pods-RudderFirebaseTests.release.xcconfig */,
+				2EB7A127879315021C4F40F7 /* Pods-RudderFirebase.debug.xcconfig */,
+				6910E4D20FA749A878453386 /* Pods-RudderFirebase.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		AFABCD8DECF8CE3801143B67 /* Frameworks */ = {
+		73DF6D5D06A66E08A18C98CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E816D6F9575D2F8B0A8B3195 /* Pods_RudderFirebase.framework */,
-				EBE7F8157C54D38E98047AFF /* Pods_RudderFirebaseTests.framework */,
+				973F4D4BB439F63413AF35AA /* Pods_RudderFirebase.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -70,7 +64,7 @@
 				ED2A28F52770570400646788 /* Sources */,
 				ED2A28EC2770560400646788 /* Products */,
 				208F25C796D8593BF8DAB48E /* Pods */,
-				AFABCD8DECF8CE3801143B67 /* Frameworks */,
+				73DF6D5D06A66E08A18C98CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,7 +119,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED2A28F22770560400646788 /* Build configuration list for PBXNativeTarget "RudderFirebase" */;
 			buildPhases = (
-				6CA9888A8E35F359D34E75CC /* [CP] Check Pods Manifest.lock */,
+				E8F8D99C915AE7FC269DC35F /* [CP] Check Pods Manifest.lock */,
 				ED2A28E62770560400646788 /* Headers */,
 				ED2A28E72770560400646788 /* Sources */,
 				ED2A28E82770560400646788 /* Frameworks */,
@@ -185,7 +179,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6CA9888A8E35F359D34E75CC /* [CP] Check Pods Manifest.lock */ = {
+		E8F8D99C915AE7FC269DC35F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -273,7 +267,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -331,7 +325,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -345,8 +339,9 @@
 		};
 		ED2A28F32770560400646788 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E052D118B7FE0B3635784E1 /* Pods-RudderFirebase.debug.xcconfig */;
+			baseConfigurationReference = 2EB7A127879315021C4F40F7 /* Pods-RudderFirebase.debug.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -358,7 +353,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -377,8 +372,9 @@
 		};
 		ED2A28F42770560400646788 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 973C4F63504BDC88BBCA50B2 /* Pods-RudderFirebase.release.xcconfig */;
+			baseConfigurationReference = 6910E4D20FA749A878453386 /* Pods-RudderFirebase.release.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -390,7 +386,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

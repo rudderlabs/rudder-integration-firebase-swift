@@ -77,7 +77,7 @@ class RSFirebaseDestination: RSDestinationPlugin {
                 default: break
                 }
             }
-            if var properties = message.properties {
+            if let properties = message.properties {
                 insertECommerceData(params: &params, properties: properties)
                 if productsNeedToBeAdded {
                     insertECommerceProductData(params: &params, properties: properties)
