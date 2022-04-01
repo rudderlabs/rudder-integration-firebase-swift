@@ -89,13 +89,13 @@ PODS:
   - PromisesObjC (2.0.0)
   - RudderFirebase (1.0.0):
     - Firebase/Analytics (= 8.12.1)
-    - RudderStack (~> 1.0)
-  - RudderStack (1.0.0)
+    - RudderStack
+  - RudderStack (1.0.0-beta.3)
 
 DEPENDENCIES:
   - Firebase/Analytics (= 8.12.1)
   - RudderFirebase (from `.`)
-  - RudderStack (from `~/Documents/Rudder/RudderStack-Cocoa/`)
+  - RudderStack (from `~/Documents/Rudder/RudderStack-Swift/`)
 
 SPEC REPOS:
   trunk:
@@ -114,7 +114,7 @@ EXTERNAL SOURCES:
   RudderFirebase:
     :path: "."
   RudderStack:
-    :path: "~/Documents/Rudder/RudderStack-Cocoa/"
+    :path: "~/Documents/Rudder/RudderStack-Swift/"
 
 SPEC CHECKSUMS:
   Firebase: 580d09e8edafc3073ebf09c03fd42e4d80d35fe9
@@ -127,9 +127,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
-  RudderFirebase: bb390f22ec8c91d2a3956dd51d9562e855662be3
-  RudderStack: 705069efa869eadfe3a5aee0300dd38fa20cfbeb
+  RudderFirebase: db89a56e46f639d41af1fbb500b2607d95856a53
+  RudderStack: 7e120a03736b0021f56a504c0966b95ffa9f5bcb
 
-PODFILE CHECKSUM: 3da021bea62cb739fe1e477d11f2775486e02d58
+PODFILE CHECKSUM: 95f6f20886815fe6d0f3e0261900894465c7218e
 
 COCOAPODS: 1.11.2

@@ -5,10 +5,10 @@ Pod::Spec.new do |s|
     s.description      = <<-DESC
     Rudder is a platform for collecting, storing and routing customer event data to dozens of tools. Rudder is open-source, can run in your cloud environment (AWS, GCP, Azure or even your data-centre) and provides a powerful transformation framework to process your event data on the fly.
     DESC
-    s.homepage         = 'https://github.com/rudderlabs/rudder-firebase-ios'
+    s.homepage         = 'https://github.com/rudderlabs/rudder-integration-firebase-swift'
     s.license          = { :type => "Apache", :file => "LICENSE" }
     s.author           = { 'RudderStack' => 'arnab@rudderlabs.com' }
-    s.source           = { :git => 'https://github.com/rudderlabs/rudder-firebase-ios.git' , :tag => 'v#{s.version}'}
+    s.source           = { :git => 'https://github.com/rudderlabs/rudder-integration-firebase-swift.git' , :tag => 'v#{s.version}'}
     
     s.ios.deployment_target = '13.0'
     s.osx.deployment_target   = '10.13'
@@ -19,6 +19,6 @@ Pod::Spec.new do |s|
     s.static_framework = true
     s.swift_version = '5.3'
 
-    s.dependency 'RudderStack', '~> 1.0'
+    s.dependency 'RudderStack'
     s.dependency 'Firebase/Analytics', '8.12.1'
 end

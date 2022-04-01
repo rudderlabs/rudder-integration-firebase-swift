@@ -27,8 +27,8 @@
     
     RSClient *client = [[RSClient alloc] initWithConfig:config];
     
-    [client addWithDestination:[[RudderFirebaseDestination alloc] init]];
-    [client track:@"Track 1" properties:NULL option:NULL];
+    [client addDestination:[[RudderFirebaseDestination alloc] init]];
+    [client track:@"Track 1"];
     return YES;
 }
 
