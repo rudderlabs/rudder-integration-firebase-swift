@@ -23,40 +23,35 @@
 </p>
 
 ---
-# What is RudderStack?
+# Integrating RudderStack iOS SDK with Firebase
 
-[RudderStack](https://rudderstack.com/) is a **customer data pipeline tool** for collecting, routing and processing data from your websites, apps, cloud tools, and data warehouse.
+This repository contains the resources and assets required to integrate the [RudderStack iOS SDK](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/) with [Firebase](https://firebase.google.com/).
 
-With RudderStack, you can build customer data pipelines that connect your whole customer data stack and then make them smarter by triggering enrichment and activation in customer tools based on analysis in your data warehouse. Its easy-to-use SDKs and event source integrations, Cloud Extract integrations, transformations, and expansive library of destination and warehouse integrations makes building customer data pipelines for both event streaming and cloud-to-warehouse ELT simple. 
-
-| Try **RudderStack Cloud Free** - a no time limit, no credit card required, completely free tier of [RudderStack Cloud](https://resources.rudderstack.com/rudderstack-cloud). Click [here](https://app.rudderlabs.com/signup?type=freetrial) to start building a smarter customer data pipeline today, with RudderStack Cloud Free. |
-|:------|
-
-Questions? Please join our [Slack channel](https://resources.rudderstack.com/join-rudderstack-slack) or read about us on [Product Hunt](https://www.producthunt.com/posts/rudderstack).
-
-## Integrating Firebase with the RudderStack iOS SDK
+## Step 1: Integrate the SDK with Firebase
 
 1. Add [Firebase](http://firebase.google.com) as a destination in the [RudderStack dashboard](https://app.rudderstack.com/).
-
-2. RudderFirebase is available through [CocoaPods](https://cocoapods.org). To install it, add the following line to your Podfile and followed by `pod install`:
+2. `RudderFirebase` is available through [CocoaPods](https://cocoapods.org). To install it, add the following line to your Podfile and followed by `pod install`, as shown:
 
 ```ruby
 pod 'RudderFirebase'
 ```
 
-3. Download the `GoogleService-Info.plist` from your Firebase console and put it in your project.
+3. Download the `GoogleService-Info.plist` from your Firebase console and place it in your project.
 
-## Initializing ```RSClient```
+## Step 2: Initialize the RudderStack client (`RSClient`)
 
-Put this code in your ```AppDelegate``` under the method ```didFinishLaunchingWithOptions```
-##### Objective C
+Place the following in your ```AppDelegate``` under the ```didFinishLaunchingWithOptions``` method:
+
+### Objective C
+
 ```objective-c
 RSConfig *config = [[RSConfig alloc] initWithWriteKey:WRITE_KEY];
 [config dataPlaneURL:DATA_PLANE_URL];
 [[RSClient sharedInstance] configureWith:config];
 [[RSClient sharedInstance] addDestination:[[RudderFirebaseDestination alloc] init]];
 ```
-##### Swift
+### Swift
+
 ```swift
 let config: RSConfig = RSConfig(writeKey: WRITE_KEY)
             .dataPlaneURL(DATA_PLANE_URL)
@@ -64,10 +59,17 @@ RSClient.sharedInstance().configure(with: config)
 RSClient.sharedInstance().addDestination(RudderFirebaseDestination())
 ```
 
-## Sending Events
+## Step 3: Send events
 
-Follow the steps from the [RudderStack Swift SDK](https://github.com/rudderlabs/rudder-sdk-ios/tree/master-v2#sending-events) repo.
+Follow the steps listed in the [RudderStack Swift SDK](https://github.com/rudderlabs/rudder-sdk-ios/tree/master-v2#sending-events) repo to start sending events to Firebase.
 
-## Contact Us
+## About RudderStack
 
-If you come across any issues while configuring or using this integration, please feel free to start a conversation on our [Slack](https://resources.rudderstack.com/join-rudderstack-slack) channel. We will be happy to help you.
+RudderStack is the **customer data platform** for developers. With RudderStack, you can build and deploy efficient pipelines that collect customer data from every app, website, and SaaS platform, then activate your data in your warehouse, business, and marketing tools.
+
+| Start building a better, warehouse-first CDP that delivers complete, unified data to every part of your customer data stack. Sign up for [RudderStack Cloud](https://app.rudderstack.com/signup?type=freetrial) today. |
+| :---|
+
+## Contact us
+
+For queries on configuring or using this integration, [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
