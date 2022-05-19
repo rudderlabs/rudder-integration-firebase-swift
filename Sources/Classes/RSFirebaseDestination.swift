@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import RudderStack
+import Rudder
 import FirebaseAnalytics
 import FirebaseCore
 
@@ -70,9 +70,9 @@ class RSFirebaseDestination: RSDestinationPlugin {
                 productsNeedToBeAdded = true
             default:
                 switch message.event {
-                case RSECommerceConstants.ECommProductShared:
+                case RSEvents.Ecommerce.productShared:
                     params?[AnalyticsParameterContentType] = "product"
-                case RSECommerceConstants.ECommCartShared:
+                case RSEvents.Ecommerce.cartShared:
                     params?[AnalyticsParameterContentType] = "cart"
                 default: break
                 }
@@ -138,22 +138,22 @@ extension RSFirebaseDestination {
         
     func getFirebaseECommerceEvent(from rudderEvent: String) -> String? {
         switch rudderEvent {
-        case RSECommerceConstants.ECommPaymentInfoEntered: return AnalyticsEventAddPaymentInfo
-        case RSECommerceConstants.ECommProductAdded: return AnalyticsEventAddToCart
-        case RSECommerceConstants.ECommProductAddedToWishList: return AnalyticsEventAddToWishlist
-        case RSECommerceConstants.ECommCheckoutStarted: return AnalyticsEventBeginCheckout
-        case RSECommerceConstants.ECommOrderCompleted: return AnalyticsEventPurchase
-        case RSECommerceConstants.ECommOrderRefunded: return AnalyticsEventRefund
-        case RSECommerceConstants.ECommProductsSearched: return AnalyticsEventSearch
-        case RSECommerceConstants.ECommCartShared: return AnalyticsEventShare
-        case RSECommerceConstants.ECommProductShared: return AnalyticsEventShare
-        case RSECommerceConstants.ECommProductViewed: return AnalyticsEventViewItem
-        case RSECommerceConstants.ECommProductListViewed: return AnalyticsEventViewItemList
-        case RSECommerceConstants.ECommProductRemoved: return AnalyticsEventRemoveFromCart
-        case RSECommerceConstants.ECommProductClicked: return AnalyticsEventSelectContent
-        case RSECommerceConstants.ECommPromotionViewed: return AnalyticsEventViewPromotion
-        case RSECommerceConstants.ECommPromotionClicked: return AnalyticsEventSelectPromotion
-        case RSECommerceConstants.ECommCartViewed: return AnalyticsEventViewCart
+        case RSEvents.Ecommerce.paymentInfoEntered: return AnalyticsEventAddPaymentInfo
+        case RSEvents.Ecommerce.productAdded: return AnalyticsEventAddToCart
+        case RSEvents.Ecommerce.productAddedToWishList: return AnalyticsEventAddToWishlist
+        case RSEvents.Ecommerce.checkoutStarted: return AnalyticsEventBeginCheckout
+        case RSEvents.Ecommerce.orderCompleted: return AnalyticsEventPurchase
+        case RSEvents.Ecommerce.orderRefunded: return AnalyticsEventRefund
+        case RSEvents.Ecommerce.productsSearched: return AnalyticsEventSearch
+        case RSEvents.Ecommerce.cartShared: return AnalyticsEventShare
+        case RSEvents.Ecommerce.productShared: return AnalyticsEventShare
+        case RSEvents.Ecommerce.productViewed: return AnalyticsEventViewItem
+        case RSEvents.Ecommerce.productListViewed: return AnalyticsEventViewItemList
+        case RSEvents.Ecommerce.productRemoved: return AnalyticsEventRemoveFromCart
+        case RSEvents.Ecommerce.productClicked: return AnalyticsEventSelectContent
+        case RSEvents.Ecommerce.promotionViewed: return AnalyticsEventViewPromotion
+        case RSEvents.Ecommerce.promotionClicked: return AnalyticsEventSelectPromotion
+        case RSEvents.Ecommerce.cartViewed: return AnalyticsEventViewCart
         default: return nil
         }
     }

@@ -5,13 +5,13 @@ inhibit_all_warnings!
 platform :ios, '13.0'
 
 def shared_pods
-    pod 'RudderStack', :path => '~/Documents/Rudder/RudderStack-Swift/'
+    pod 'Rudder', '~> 2.0.0'
 end
 
 target 'RudderFirebase' do
     project 'RudderFirebase.xcodeproj'
     shared_pods
-    pod 'Firebase/Analytics', '8.12.1'
+    pod 'Firebase/Analytics', '8.15.0'
 end
 
 target 'SampleAppObjC' do

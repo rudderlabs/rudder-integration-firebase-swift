@@ -7,7 +7,7 @@
 
 #import "AppDelegate.h"
 
-@import RudderStack;
+@import Rudder;
 @import RudderFirebase;
 
 @interface AppDelegate ()
@@ -24,11 +24,10 @@
     [config loglevel:RSLogLevelDebug];
     [config trackLifecycleEvents:YES];
     [config recordScreenViews:YES];
-    
-    RSClient *client = [[RSClient alloc] initWithConfig:config];
-    
-    [client addDestination:[[RudderFirebaseDestination alloc] init]];
-    [client track:@"Track 1"];
+        
+    [[RSClient sharedInstance] configureWith:config];
+    [[RSClient sharedInstance] addDestination:[[RudderFirebaseDestination alloc] init]];
+    [[RSClient sharedInstance] track:@"Track 1"];
     return YES;
 }
 

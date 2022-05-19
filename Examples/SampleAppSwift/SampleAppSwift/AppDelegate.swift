@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import RudderStack
+import Rudder
 import RudderFirebase
 
 @UIApplicationMain
@@ -24,9 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .trackLifecycleEvents(true)
             .recordScreenViews(true)
         
-        client = RSClient(config: config)
-
-        client?.addDestination(RudderFirebaseDestination())        
+        RSClient.sharedInstance().configure(with: config)
+        RSClient.sharedInstance().addDestination(RudderFirebaseDestination())
         return true
     }
 

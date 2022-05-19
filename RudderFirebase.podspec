@@ -12,13 +12,13 @@ Pod::Spec.new do |s|
     
     s.ios.deployment_target = '13.0'
     s.osx.deployment_target   = '10.13'
-    s.tvos.deployment_target  = '11.0'
+    s.tvos.deployment_target  = '12.0'
 
     s.source_files = 'Sources/**/*{h,m,swift}'
     s.module_name = 'RudderFirebase'
     s.static_framework = true
     s.swift_version = '5.3'
 
-    s.dependency 'RudderStack'
-    s.dependency 'Firebase/Analytics', '8.12.1'
+    s.dependency 'Rudder', '~> 2.0.0'
+    s.dependency 'Firebase/Analytics', '~> 8.15.0'
 end
