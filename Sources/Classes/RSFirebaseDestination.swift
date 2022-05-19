@@ -35,8 +35,10 @@ class RSFirebaseDestination: RSDestinationPlugin {
                     continue
                 }
                 let firebaseKey = key.firebaseEvent
-                client?.log(message: "Setting userProperty to Firebase: \(firebaseKey)", logLevel: .debug)
-                FirebaseAnalytics.Analytics.setUserProperty(value, forName: firebaseKey)
+                if !IDENTIFY_RESERVED_KEYWORDS.contains(firebaseKey) {                                        
+                    client?.log(message: "Setting userProperty to Firebase: \(firebaseKey)", logLevel: .debug)
+                    FirebaseAnalytics.Analytics.setUserProperty(value, forName: firebaseKey)
+                }
             }
         }
         return message
@@ -134,6 +136,10 @@ extension String {
 extension RSFirebaseDestination {
     var TRACK_RESERVED_KEYWORDS: [String] {
         return ["product_id", "name", "category", "quantity", "price", "currency", "value", "revenue", "total", "tax", "shipping", "coupon", "cart_id", "payment_method", "query", "list_id", "promotion_id", "creative", "affiliation", "share_via", "products", AnalyticsParameterScreenName]
+    }
+    
+    var IDENTIFY_RESERVED_KEYWORDS: [String] {
+        return ["age", "gender", "interest"]
     }
         
     func getFirebaseECommerceEvent(from rudderEvent: String) -> String? {
