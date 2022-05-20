@@ -47,24 +47,24 @@ class RSFirebaseDestination: RSDestinationPlugin {
     func track(message: TrackMessage) -> TrackMessage? {
         var firebaseEvent: String?
         var params: [String: Any]? = [String: Any]()
-        if message.event == "Application Opened" {
+        if message.event == RSEvents.LifeCycle.applicationOpened {
             firebaseEvent = AnalyticsEventAppOpen
         } else if let event = getFirebaseECommerceEvent(from: message.event) {
             firebaseEvent = event
             var productsNeedToBeAdded = false
             switch firebaseEvent {
             case AnalyticsEventShare:
-                if let cartId = message.properties?["cart_id"] {
+                if let cartId = message.properties?[RSKeys.Ecommerce.cartId] {
                     params?[AnalyticsParameterItemID] = cartId
-                } else if let productId = message.properties?["product_id"] {
+                } else if let productId = message.properties?[RSKeys.Ecommerce.productId] {
                     params?[AnalyticsParameterItemID] = productId
                 }
             case AnalyticsEventViewPromotion, AnalyticsEventSelectPromotion:
-                if let name = message.properties?["name"] {
+                if let name = message.properties?[RSKeys.Ecommerce.productName] {
                     params?[AnalyticsParameterPromotionName] = name
                 }
             case AnalyticsEventSelectContent:
-                if let productId = message.properties?["product_id"] {
+                if let productId = message.properties?[RSKeys.Ecommerce.productId] {
                     params?[AnalyticsParameterItemID] = productId
                 }
                 params?[AnalyticsParameterContentType] = "product"
@@ -135,11 +135,11 @@ extension String {
 
 extension RSFirebaseDestination {
     var TRACK_RESERVED_KEYWORDS: [String] {
-        return ["product_id", "name", "category", "quantity", "price", "currency", "value", "revenue", "total", "tax", "shipping", "coupon", "cart_id", "payment_method", "query", "list_id", "promotion_id", "creative", "affiliation", "share_via", "products", AnalyticsParameterScreenName]
+        return [RSKeys.Ecommerce.productId, RSKeys.Ecommerce.productName, RSKeys.Ecommerce.category, RSKeys.Ecommerce.quantity, RSKeys.Ecommerce.price, RSKeys.Ecommerce.currency, RSKeys.Ecommerce.value, RSKeys.Ecommerce.revenue, RSKeys.Ecommerce.total, RSKeys.Ecommerce.tax, RSKeys.Ecommerce.shipping, RSKeys.Ecommerce.coupon, RSKeys.Ecommerce.cartId, RSKeys.Ecommerce.paymentMethod, RSKeys.Ecommerce.query, RSKeys.Ecommerce.listId, "promotion_id", "creative", RSKeys.Ecommerce.affiliation, RSKeys.Other.shareVia, RSKeys.Ecommerce.products, AnalyticsParameterScreenName]
     }
     
     var IDENTIFY_RESERVED_KEYWORDS: [String] {
-        return ["age", "gender", "interest"]
+        return [RSKeys.Identify.Traits.age, RSKeys.Identify.Traits.gender, "interest"]
     }
         
     func getFirebaseECommerceEvent(from rudderEvent: String) -> String? {
@@ -166,14 +166,14 @@ extension RSFirebaseDestination {
     
     func getFirebaseECommerceParameter(from rudderEvent: String) -> String? {
         switch rudderEvent {
-        case "payment_method": return AnalyticsParameterPaymentType
-        case "coupon": return AnalyticsParameterCoupon
-        case "query": return AnalyticsParameterSearchTerm
-        case "list_id": return AnalyticsParameterItemListID
+        case RSKeys.Ecommerce.paymentMethod: return AnalyticsParameterPaymentType
+        case RSKeys.Ecommerce.coupon: return AnalyticsParameterCoupon
+        case RSKeys.Ecommerce.query: return AnalyticsParameterSearchTerm
+        case RSKeys.Ecommerce.listId: return AnalyticsParameterItemListID
         case "promotion_id": return AnalyticsParameterPromotionID
         case "creative": return AnalyticsParameterCreativeName
-        case "affiliation": return AnalyticsParameterAffiliation
-        case "share_via": return AnalyticsParameterMethod
+        case RSKeys.Ecommerce.affiliation: return AnalyticsParameterAffiliation
+        case RSKeys.Other.shareVia: return AnalyticsParameterMethod
         default: return nil
         }
     }
@@ -199,25 +199,25 @@ extension RSFirebaseDestination {
     }
     
     func insertECommerceData(params: inout [String: Any]?, properties: [String: Any]) {
-        if let revenue = properties["revenue"] {
+        if let revenue = properties[RSKeys.Ecommerce.revenue] {
             params?[AnalyticsParameterValue] = Double("\(revenue)")
-        } else if let value = properties["value"] {
+        } else if let value = properties[RSKeys.Ecommerce.value] {
             params?[AnalyticsParameterValue] = Double("\(value)")
-        } else if let total = properties["total"] {
+        } else if let total = properties[RSKeys.Ecommerce.total] {
             params?[AnalyticsParameterValue] = Double("\(total)")
         }
         
-        if let currency = properties["currency"] {
+        if let currency = properties[RSKeys.Ecommerce.currency] {
             params?[AnalyticsParameterCurrency] = "\(currency)"
         } else {
             params?[AnalyticsParameterCurrency] = "USD"
         }
         
-        if let shipping = properties["shipping"] {
+        if let shipping = properties[RSKeys.Ecommerce.shipping] {
             params?[AnalyticsParameterShipping] = Double("\(shipping)")
         }
         
-        if let tax = properties["tax"] {
+        if let tax = properties[RSKeys.Ecommerce.tax] {
             params?[AnalyticsParameterTax] = Double("\(tax)")
         }
         
@@ -234,15 +234,15 @@ extension RSFirebaseDestination {
             var params = [String: Any]()
             for (key, value) in product {
                 switch key {
-                case "product_id":
+                case RSKeys.Ecommerce.productId:
                     params[AnalyticsParameterItemID] = "\(value)"
-                case "name":
+                case RSKeys.Ecommerce.productName:
                     params[AnalyticsParameterItemName] = "\(value)"
-                case "category":
+                case RSKeys.Ecommerce.category:
                     params[AnalyticsParameterItemCategory] = "\(value)"
-                case "quantity":
+                case RSKeys.Ecommerce.quantity:
                     params[AnalyticsParameterQuantity] = Int("\(value)")
-                case "price":
+                case RSKeys.Ecommerce.price:
                     params[AnalyticsParameterPrice] = Double("\(value)")
                 default:
                     break
@@ -253,7 +253,7 @@ extension RSFirebaseDestination {
             }
         }
         var productList = [[String: Any]]()
-        if let products = properties["products"] as? [[String: Any]] {
+        if let products = properties[RSKeys.Ecommerce.products] as? [[String: Any]] {
             for product in products {
                 handleProductData(productList: &productList, product: product)
             }
