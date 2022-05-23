@@ -27,6 +27,9 @@
 
 This repository contains the resources and assets required to integrate the [RudderStack iOS SDK](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/ios-v2/) with [Firebase](https://firebase.google.com/).
 
+| For more information on configuring Firebase as a destination in RudderStack and the supported events and their mappings, refer to the [Firebase documentation](https://www.rudderstack.com/docs/destinations/analytics/firebase/).   |
+| :--|
+
 ## Step 1: Integrate the SDK with Firebase
 
 1. Add [Firebase](http://firebase.google.com) as a destination in the [RudderStack dashboard](https://app.rudderstack.com/).
