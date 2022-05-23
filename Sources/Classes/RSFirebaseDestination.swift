@@ -32,7 +32,7 @@ class RSFirebaseDestination: RSDestinationPlugin {
         }
         if let traits = extractTraits(traits: message.traits) {
             for (key, value) in traits {
-                if key == "userId" {
+                if key == RSKeys.Identify.userId {
                     continue
                 }
                 let firebaseKey = key.firebaseEvent
@@ -140,7 +140,7 @@ extension RSFirebaseDestination {
     }
     
     var IDENTIFY_RESERVED_KEYWORDS: [String] {
-        return [RSKeys.Identify.Traits.age, RSKeys.Identify.Traits.gender, "interest"]
+        return [RSKeys.Identify.Traits.age, RSKeys.Identify.Traits.gender, RSKeys.Other.interest]
     }
         
     func getFirebaseECommerceEvent(from rudderEvent: String) -> String? {
