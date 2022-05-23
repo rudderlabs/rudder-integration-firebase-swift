@@ -28,6 +28,7 @@ class RSFirebaseDestination: RSDestinationPlugin {
     func identify(message: IdentifyMessage) -> IdentifyMessage? {
         if let userId = message.userId, userId.count > 0 {
             FirebaseAnalytics.Analytics.setUserID(userId)
+            client?.log(message: "Setting userId to firebase", logLevel: .debug)
         }
         if let traits = extractTraits(traits: message.traits) {
             for (key, value) in traits {
@@ -135,7 +136,7 @@ extension String {
 
 extension RSFirebaseDestination {
     var TRACK_RESERVED_KEYWORDS: [String] {
-        return [RSKeys.Ecommerce.productId, RSKeys.Ecommerce.productName, RSKeys.Ecommerce.category, RSKeys.Ecommerce.quantity, RSKeys.Ecommerce.price, RSKeys.Ecommerce.currency, RSKeys.Ecommerce.value, RSKeys.Ecommerce.revenue, RSKeys.Ecommerce.total, RSKeys.Ecommerce.tax, RSKeys.Ecommerce.shipping, RSKeys.Ecommerce.coupon, RSKeys.Ecommerce.cartId, RSKeys.Ecommerce.paymentMethod, RSKeys.Ecommerce.query, RSKeys.Ecommerce.listId, "promotion_id", "creative", RSKeys.Ecommerce.affiliation, RSKeys.Other.shareVia, RSKeys.Ecommerce.products, AnalyticsParameterScreenName]
+        return [RSKeys.Ecommerce.productId, RSKeys.Ecommerce.productName, RSKeys.Ecommerce.category, RSKeys.Ecommerce.quantity, RSKeys.Ecommerce.price, RSKeys.Ecommerce.currency, RSKeys.Ecommerce.value, RSKeys.Ecommerce.revenue, RSKeys.Ecommerce.total, RSKeys.Ecommerce.tax, RSKeys.Ecommerce.shipping, RSKeys.Ecommerce.coupon, RSKeys.Ecommerce.cartId, RSKeys.Ecommerce.paymentMethod, RSKeys.Ecommerce.query, RSKeys.Ecommerce.listId, RSKeys.Ecommerce.promotionId, RSKeys.Ecommerce.creative, RSKeys.Ecommerce.affiliation, RSKeys.Other.shareVia, RSKeys.Ecommerce.products, AnalyticsParameterScreenName]
     }
     
     var IDENTIFY_RESERVED_KEYWORDS: [String] {
@@ -170,8 +171,8 @@ extension RSFirebaseDestination {
         case RSKeys.Ecommerce.coupon: return AnalyticsParameterCoupon
         case RSKeys.Ecommerce.query: return AnalyticsParameterSearchTerm
         case RSKeys.Ecommerce.listId: return AnalyticsParameterItemListID
-        case "promotion_id": return AnalyticsParameterPromotionID
-        case "creative": return AnalyticsParameterCreativeName
+        case RSKeys.Ecommerce.promotionId: return AnalyticsParameterPromotionID
+        case RSKeys.Ecommerce.creative: return AnalyticsParameterCreativeName
         case RSKeys.Ecommerce.affiliation: return AnalyticsParameterAffiliation
         case RSKeys.Other.shareVia: return AnalyticsParameterMethod
         default: return nil
@@ -236,7 +237,7 @@ extension RSFirebaseDestination {
                 switch key {
                 case RSKeys.Ecommerce.productId:
                     params[AnalyticsParameterItemID] = "\(value)"
-                case RSKeys.Ecommerce.productName:
+                case RSKeys.Other.itemName:
                     params[AnalyticsParameterItemName] = "\(value)"
                 case RSKeys.Ecommerce.category:
                     params[AnalyticsParameterItemCategory] = "\(value)"
