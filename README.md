@@ -27,23 +27,39 @@
 
 This repository contains the resources and assets required to integrate the [RudderStack iOS SDK](https://www.rudderstack.com/docs/stream-sources/rudderstack-sdk-integration-guides/rudderstack-ios-sdk/ios-v2/) with [Firebase](https://firebase.google.com/).
 
-| For more information on configuring Firebase as a destination in RudderStack and the supported events and their mappings, refer to the [Firebase documentation](https://www.rudderstack.com/docs/destinations/analytics/firebase/).   |
-| :--|
+For more information on configuring Firebase as a destination in RudderStack and the supported events and their mappings, refer to the [Firebase documentation](https://www.rudderstack.com/docs/destinations/analytics/firebase/).
+
+| Important: This device mode integration is supported for Firebase v8.15.0 and above.|
+| :---|
 
 ## Step 1: Integrate the SDK with Firebase
 
 1. Add [Firebase](http://firebase.google.com) as a destination in the [RudderStack dashboard](https://app.rudderstack.com/).
-2. `RudderFirebase` is available through [CocoaPods](https://cocoapods.org). To install it, add the following line to your Podfile and followed by `pod install`, as shown:
+2. Download the `GoogleService-Info.plist` from your [Firebase console](https://console.firebase.google.com/) and place it in your project.
+3. `RudderFirebase` is available through [CocoaPods](https://cocoapods.org). To install it, add the following line to your `Podfile`:
 
 ```ruby
-pod 'RudderFirebase'
+pod 'RudderFirebase', '~> 1.0.0'
+```
+4. Run the `pod install` command.
+
+## Step 2: Import the SDK
+
+### Swift
+
+```swift
+import RudderFirebase
 ```
 
-3. Download the `GoogleService-Info.plist` from your Firebase console and place it in your project.
+### Objective C
 
-## Step 2: Initialize the RudderStack client (`RSClient`)
+```objectivec
+@import RudderFirebase;
+```
 
-Place the following in your ```AppDelegate``` under the ```didFinishLaunchingWithOptions``` method:
+## Step 3: Initialize the RudderStack client (`RSClient`)
+
+Place the following in your `AppDelegate` under the `didFinishLaunchingWithOptions` method.
 
 ### Objective C
 
@@ -62,7 +78,7 @@ RSClient.sharedInstance().configure(with: config)
 RSClient.sharedInstance().addDestination(RudderFirebaseDestination())
 ```
 
-## Step 3: Send events
+## Step 4: Send events
 
 Follow the steps listed in the [RudderStack Swift SDK](https://github.com/rudderlabs/rudder-sdk-ios/tree/master-v2#sending-events) repo to start sending events to Firebase.
 
