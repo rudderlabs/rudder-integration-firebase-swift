@@ -80,7 +80,7 @@ RSClient.sharedInstance().addDestination(RudderFirebaseDestination())
 
 ## Step 4: Send events
 
-Follow the steps listed in the [RudderStack Swift SDK](https://github.com/rudderlabs/rudder-sdk-ios/tree/master-v2#sending-events) repo to start sending events to Firebase.
+Follow the steps listed in the [RudderStack iOS SDK](https://github.com/rudderlabs/rudder-sdk-ios/tree/master-v2#sending-events) repo to start sending events to Firebase.
 
 ## About RudderStack
 
@@ -91,4 +91,4 @@ RudderStack is the **customer data platform** for developers. With RudderStack, 
 
 ## Contact us
 
-For queries on configuring or using this integration, [contact us](mailto:%20docs@rudderstack.com) or start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
+For queries on configuring or using this integration, start a conversation in our [Slack](https://rudderstack.com/join-rudderstack-slack-community) community.
