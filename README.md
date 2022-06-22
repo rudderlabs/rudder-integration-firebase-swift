@@ -39,7 +39,7 @@ For more information on configuring Firebase as a destination in RudderStack and
 3. `RudderFirebase` is available through [CocoaPods](https://cocoapods.org). To install it, add the following line to your `Podfile`:
 
 ```ruby
-pod 'RudderFirebase', '~> 1.0.0'
+pod 'RudderFirebase', '~> 1.0.1'
 ```
 4. Run the `pod install` command.
 

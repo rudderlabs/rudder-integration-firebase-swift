@@ -48,6 +48,7 @@ class RSFirebaseDestination: RSDestinationPlugin {
     func track(message: TrackMessage) -> TrackMessage? {
         var firebaseEvent: String?
         var params: [String: Any]? = [String: Any]()
+        var properties = message.properties
         if message.event == RSEvents.LifeCycle.applicationOpened {
             firebaseEvent = AnalyticsEventAppOpen
         } else if let event = getFirebaseECommerceEvent(from: message.event) {
@@ -55,21 +56,27 @@ class RSFirebaseDestination: RSDestinationPlugin {
             var productsNeedToBeAdded = false
             switch firebaseEvent {
             case AnalyticsEventShare:
-                if let cartId = message.properties?[RSKeys.Ecommerce.cartId] {
+                if let cartId = properties?[RSKeys.Ecommerce.cartId] {
                     params?[AnalyticsParameterItemID] = cartId
                 } else if let productId = message.properties?[RSKeys.Ecommerce.productId] {
                     params?[AnalyticsParameterItemID] = productId
                 }
             case AnalyticsEventViewPromotion, AnalyticsEventSelectPromotion:
-                if let name = message.properties?[RSKeys.Ecommerce.productName] {
+                if let name = properties?[RSKeys.Ecommerce.productName] {
                     params?[AnalyticsParameterPromotionName] = name
                 }
             case AnalyticsEventSelectContent:
-                if let productId = message.properties?[RSKeys.Ecommerce.productId] {
+                if let productId = properties?[RSKeys.Ecommerce.productId] {
                     params?[AnalyticsParameterItemID] = productId
                 }
                 params?[AnalyticsParameterContentType] = "product"
-            case AnalyticsEventAddToCart, AnalyticsEventAddToWishlist, AnalyticsEventViewItem, AnalyticsEventRemoveFromCart, AnalyticsEventBeginCheckout, AnalyticsEventPurchase, AnalyticsEventRefund, AnalyticsEventViewItemList, AnalyticsEventViewCart:
+            case AnalyticsEventPurchase, AnalyticsEventRefund:
+                if let orderId = properties?[RSKeys.Ecommerce.orderId] {
+                    params?[AnalyticsParameterTransactionID] = orderId
+                    properties?.removeValue(forKey: RSKeys.Ecommerce.orderId)
+                }
+                productsNeedToBeAdded = true
+            case AnalyticsEventAddToCart, AnalyticsEventAddToWishlist, AnalyticsEventViewItem, AnalyticsEventRemoveFromCart, AnalyticsEventBeginCheckout, AnalyticsEventViewItemList, AnalyticsEventViewCart:
                 productsNeedToBeAdded = true
             default:
                 switch message.event {
@@ -80,7 +87,7 @@ class RSFirebaseDestination: RSDestinationPlugin {
                 default: break
                 }
             }
-            if let properties = message.properties {
+            if let properties = properties {
                 insertECommerceData(params: &params, properties: properties)
                 if productsNeedToBeAdded {
                     insertECommerceProductData(params: &params, properties: properties)
@@ -90,7 +97,7 @@ class RSFirebaseDestination: RSDestinationPlugin {
             firebaseEvent = message.event.firebaseEvent
         }
         if let event = firebaseEvent {
-            if let properties = message.properties {
+            if let properties = properties {
                 insertCustomPropertiesData(params: &params, properties: properties)
             }
             FirebaseAnalytics.Analytics.logEvent(event, parameters: params)

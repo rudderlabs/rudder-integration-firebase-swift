@@ -87,14 +87,14 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.1.0)
-  - Rudder (2.0.1)
-  - RudderFirebase (1.0.0):
+  - Rudder (2.1.0)
+  - RudderFirebase (1.0.1):
     - Firebase/Analytics (~> 8.15.0)
-    - Rudder (~> 2.0.0)
+    - Rudder (~> 2.1.0)
 
 DEPENDENCIES:
   - Firebase/Analytics (= 8.15.0)
-  - Rudder (~> 2.0.0)
+  - Rudder (~> 2.1.0)
   - RudderFirebase (from `.`)
 
 SPEC REPOS:
@@ -126,9 +126,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
-  Rudder: e16a7f96f253e1d9e290a1fe544570e4784fce68
-  RudderFirebase: ad91b8bfd46c68b0b7404e6b1e523834951bdb5b
+  Rudder: 89ed5873691e25d919ca9abe6d6172d924cdb0ca
+  RudderFirebase: 945670fe6c3466f70f74edca487118b911113397
 
-PODFILE CHECKSUM: f9cffc4e1f2956476f534ce11682e1c105f1ff51
+PODFILE CHECKSUM: 0fa239b01a89557eb6dea9a11d19c09dd9fb12f2
 
 COCOAPODS: 1.11.3
