@@ -73,7 +73,6 @@ class RSFirebaseDestination: RSDestinationPlugin {
             case AnalyticsEventPurchase, AnalyticsEventRefund:
                 if let orderId = properties?[RSKeys.Ecommerce.orderId] {
                     params?[AnalyticsParameterTransactionID] = orderId
-                    properties?.removeValue(forKey: RSKeys.Ecommerce.orderId)
                 }
                 productsNeedToBeAdded = true
             case AnalyticsEventAddToCart, AnalyticsEventAddToWishlist, AnalyticsEventViewItem, AnalyticsEventRemoveFromCart, AnalyticsEventBeginCheckout, AnalyticsEventViewItemList, AnalyticsEventViewCart:
