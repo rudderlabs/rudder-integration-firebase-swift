@@ -222,6 +222,7 @@ extension RSFirebaseDestination {
             params?[AnalyticsParameterTax] = Double("\(tax)")
         }
         
+        /// To have the backward compatibility, we'll not filter `order_id` and send it as a custom event. So we're expecting two fields `order_id` and `transaction_id` in the firebase dashboard for an `order_id` key.
         if let orderId = properties[RSKeys.Ecommerce.orderId] {
             params?[AnalyticsParameterTransactionID] = "\(orderId)"
         }
