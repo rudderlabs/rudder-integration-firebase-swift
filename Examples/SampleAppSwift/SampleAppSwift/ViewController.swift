@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Rudder
 
 struct Events {
     let name: String
@@ -253,7 +254,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = events[indexPath.row]
-        let client = (UIApplication.shared.delegate as? AppDelegate)?.client
+        let client: RSClient? = RSClient.sharedInstance()
         switch indexPath.row {
         case events.count - 1, events.count - 2:
             if let properties = item.properties {
