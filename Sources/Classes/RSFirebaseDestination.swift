@@ -18,7 +18,7 @@ class RSFirebaseDestination: RSDestinationPlugin {
         
     func update(serverConfig: RSServerConfig, type: UpdateType) {
         guard type == .initial else { return }
-        if (FirebaseApp.app() != nil) {
+        if FirebaseApp.app() != nil {
             client?.log(message: "Firebase already configured.", logLevel: .debug)
         } else {
             FirebaseApp.configure()
@@ -26,7 +26,7 @@ class RSFirebaseDestination: RSDestinationPlugin {
     }
     
     func identify(message: IdentifyMessage) -> IdentifyMessage? {
-        if let userId = message.userId, userId.count > 0 {
+        if let userId = message.userId, !userId.isEmpty {
             FirebaseAnalytics.Analytics.setUserID(userId)
             client?.log(message: "Setting userId to firebase", logLevel: .debug)
         }
@@ -45,7 +45,7 @@ class RSFirebaseDestination: RSDestinationPlugin {
         return message
     }
     
-    func track(message: TrackMessage) -> TrackMessage? {
+    func track(message: TrackMessage) -> TrackMessage? { // swiftlint:disable:this cyclomatic_complexity
         var firebaseEvent: String?
         var params: [String: Any]? = [String: Any]()
         if message.event == RSEvents.LifeCycle.applicationOpened {
@@ -69,7 +69,7 @@ class RSFirebaseDestination: RSDestinationPlugin {
                     params?[AnalyticsParameterItemID] = productId
                 }
                 params?[AnalyticsParameterContentType] = "product"
-            case AnalyticsEventAddToCart, AnalyticsEventAddToWishlist, AnalyticsEventViewItem, AnalyticsEventRemoveFromCart, AnalyticsEventBeginCheckout, AnalyticsEventPurchase, AnalyticsEventRefund, AnalyticsEventViewItemList, AnalyticsEventViewCart:
+            case AnalyticsEventAddToCart, AnalyticsEventAddToWishlist, AnalyticsEventViewItem, AnalyticsEventRemoveFromCart, AnalyticsEventBeginCheckout, AnalyticsEventPurchase, AnalyticsEventRefund, AnalyticsEventViewItemList, AnalyticsEventViewCart: // swiftlint:disable:this line_length
                 productsNeedToBeAdded = true
             default:
                 switch message.event {
@@ -99,7 +99,7 @@ class RSFirebaseDestination: RSDestinationPlugin {
     }
     
     func screen(message: ScreenMessage) -> ScreenMessage? {
-        if message.name.count > 0 {
+        if !message.name.isEmpty {
             var params: [String: Any]? = [AnalyticsParameterScreenName: message.name]
             if let properties = message.properties {
                 insertCustomPropertiesData(params: &params, properties: properties)
@@ -136,14 +136,14 @@ extension String {
 
 extension RSFirebaseDestination {
     var TRACK_RESERVED_KEYWORDS: [String] {
-        return [RSKeys.Ecommerce.productId, RSKeys.Ecommerce.productName, RSKeys.Ecommerce.category, RSKeys.Ecommerce.quantity, RSKeys.Ecommerce.price, RSKeys.Ecommerce.currency, RSKeys.Ecommerce.value, RSKeys.Ecommerce.revenue, RSKeys.Ecommerce.total, RSKeys.Ecommerce.tax, RSKeys.Ecommerce.shipping, RSKeys.Ecommerce.coupon, RSKeys.Ecommerce.cartId, RSKeys.Ecommerce.paymentMethod, RSKeys.Ecommerce.query, RSKeys.Ecommerce.listId, RSKeys.Ecommerce.promotionId, RSKeys.Ecommerce.creative, RSKeys.Ecommerce.affiliation, RSKeys.Other.shareVia, RSKeys.Ecommerce.products, AnalyticsParameterScreenName]
+        return [RSKeys.Ecommerce.productId, RSKeys.Ecommerce.productName, RSKeys.Ecommerce.category, RSKeys.Ecommerce.quantity, RSKeys.Ecommerce.price, RSKeys.Ecommerce.currency, RSKeys.Ecommerce.value, RSKeys.Ecommerce.revenue, RSKeys.Ecommerce.total, RSKeys.Ecommerce.tax, RSKeys.Ecommerce.shipping, RSKeys.Ecommerce.coupon, RSKeys.Ecommerce.cartId, RSKeys.Ecommerce.paymentMethod, RSKeys.Ecommerce.query, RSKeys.Ecommerce.listId, RSKeys.Ecommerce.promotionId, RSKeys.Ecommerce.creative, RSKeys.Ecommerce.affiliation, RSKeys.Other.shareVia, RSKeys.Ecommerce.products, AnalyticsParameterScreenName] // swiftlint:disable:this line_length
     }
     
     var IDENTIFY_RESERVED_KEYWORDS: [String] {
         return [RSKeys.Identify.Traits.age, RSKeys.Identify.Traits.gender, RSKeys.Other.interest]
     }
         
-    func getFirebaseECommerceEvent(from rudderEvent: String) -> String? {
+    func getFirebaseECommerceEvent(from rudderEvent: String) -> String? { // swiftlint:disable:this cyclomatic_complexity
         switch rudderEvent {
         case RSEvents.Ecommerce.paymentInfoEntered: return AnalyticsEventAddPaymentInfo
         case RSEvents.Ecommerce.productAdded: return AnalyticsEventAddToCart
@@ -222,6 +222,11 @@ extension RSFirebaseDestination {
             params?[AnalyticsParameterTax] = Double("\(tax)")
         }
         
+        /// To have the backward compatibility, we'll not filter `order_id` and send it as a custom event. So we're expecting two fields `order_id` and `transaction_id` in the firebase dashboard for an `order_id` key.
+        if let orderId = properties[RSKeys.Ecommerce.orderId] {
+            params?[AnalyticsParameterTransactionID] = "\(orderId)"
+        }
+        
         for (key, value) in properties {
             if let key = getFirebaseECommerceParameter(from: key) {
                 params?[key] = "\(value)"
@@ -289,6 +294,7 @@ extension RSFirebaseDestination {
 @objc
 public class RudderFirebaseDestination: RudderDestination {
     
+    @objc
     public override init() {
         super.init()
         plugin = RSFirebaseDestination()
