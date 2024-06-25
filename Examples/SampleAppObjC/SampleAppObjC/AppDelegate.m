@@ -6,8 +6,9 @@
 //
 
 #import "AppDelegate.h"
-#import "Rudder/Rudder-Swift.h"
-#import "RudderFirebase/RudderFirebase-Swift.h"
+
+@import Rudder;
+@import RudderFirebase;
 
 @interface AppDelegate ()
 
@@ -18,8 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    RSConfig *config = [[RSConfig alloc] initWithWriteKey:@""];
-    [config dataPlaneURL:@""];
+    RSConfig *config = [[RSConfig alloc] initWithWriteKey:@"<WRITE_KEY>"];
+    [config dataPlaneURL:@"<DATA_PLANE_URL>"];
     [config loglevel:RSLogLevelDebug];
     [config trackLifecycleEvents:YES];
     [config recordScreenViews:YES];
