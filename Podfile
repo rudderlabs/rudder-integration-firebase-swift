@@ -8,6 +8,7 @@ platform :ios, '13.0'
 target 'RudderFirebase' do
     project 'RudderFirebase.xcodeproj'
     pod 'Rudder', '~> 2.0'
+    pod 'FirebaseAnalytics', '9.2.0'
 end
 
 target 'SampleAppObjC' do
