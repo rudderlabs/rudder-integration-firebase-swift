@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,7 +14,6 @@
 		06EABC8F24665E480043D720 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06EABC8E24665E480043D720 /* Assets.xcassets */; };
 		06EABC9224665E480043D720 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06EABC9024665E480043D720 /* LaunchScreen.storyboard */; };
 		418BD9FA3D04E4C00851067F /* Pods_SampleAppSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE7A1EEFD115A4C62D06D142 /* Pods_SampleAppSwift.framework */; };
-		EDB7219E27DF9969000EE8C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDB7219D27DF9969000EE8C4 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +28,6 @@
 		121C9068672E69D949059919 /* Pods-SampleAppSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleAppSwift.release.xcconfig"; path = "Target Support Files/Pods-SampleAppSwift/Pods-SampleAppSwift.release.xcconfig"; sourceTree = "<group>"; };
 		2A827FC330C245D552E377C9 /* Pods-SampleAppSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleAppSwift.debug.xcconfig"; path = "Target Support Files/Pods-SampleAppSwift/Pods-SampleAppSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		DE7A1EEFD115A4C62D06D142 /* Pods_SampleAppSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleAppSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EDB7219D27DF9969000EE8C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +63,6 @@
 		06EABC8424665E470043D720 /* SampleAppSwift */ = {
 			isa = PBXGroup;
 			children = (
-				EDB7219D27DF9969000EE8C4 /* GoogleService-Info.plist */,
 				06EABC8524665E470043D720 /* AppDelegate.swift */,
 				06EABC8724665E470043D720 /* SceneDelegate.swift */,
 				06EABC8924665E470043D720 /* ViewController.swift */,
@@ -156,7 +153,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				06EABC9224665E480043D720 /* LaunchScreen.storyboard in Resources */,
-				EDB7219E27DF9969000EE8C4 /* GoogleService-Info.plist in Resources */,
 				06EABC8F24665E480043D720 /* Assets.xcassets in Resources */,
 				06EABC8D24665E470043D720 /* Main.storyboard in Resources */,
 			);

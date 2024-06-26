@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,7 +15,6 @@
 		EDB7218F27DB4F71000EE8C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDB7218E27DB4F71000EE8C4 /* Assets.xcassets */; };
 		EDB7219227DB4F71000EE8C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDB7219027DB4F71000EE8C4 /* LaunchScreen.storyboard */; };
 		EDB7219527DB4F71000EE8C4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EDB7219427DB4F71000EE8C4 /* main.m */; };
-		EDB7219C27DF77B3000EE8C4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDB7219B27DF77B3000EE8C4 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +33,6 @@
 		EDB7219127DB4F71000EE8C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDB7219327DB4F71000EE8C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDB7219427DB4F71000EE8C4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		EDB7219B27DF77B3000EE8C4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +86,6 @@
 		EDB7218127DB4F70000EE8C4 /* SampleAppObjC */ = {
 			isa = PBXGroup;
 			children = (
-				EDB7219B27DF77B3000EE8C4 /* GoogleService-Info.plist */,
 				EDB7218227DB4F70000EE8C4 /* AppDelegate.h */,
 				EDB7218327DB4F70000EE8C4 /* AppDelegate.m */,
 				EDB7218527DB4F70000EE8C4 /* SceneDelegate.h */,
@@ -165,7 +162,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDB7219227DB4F71000EE8C4 /* LaunchScreen.storyboard in Resources */,
-				EDB7219C27DF77B3000EE8C4 /* GoogleService-Info.plist in Resources */,
 				EDB7218F27DB4F71000EE8C4 /* Assets.xcassets in Resources */,
 				EDB7218D27DB4F70000EE8C4 /* Main.storyboard in Resources */,
 			);
@@ -369,7 +365,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z6DGB573C6;
+				DEVELOPMENT_TEAM = UCL2K3J73M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SampleAppObjC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -398,7 +394,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z6DGB573C6;
+				DEVELOPMENT_TEAM = UCL2K3J73M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SampleAppObjC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
