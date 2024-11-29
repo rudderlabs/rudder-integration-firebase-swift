@@ -118,7 +118,10 @@ class RSFirebaseDestination: RSDestinationPlugin {
 
 extension String {
     var firebaseEvent: String {
-        var string = lowercased().trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).replacingOccurrences(of: " ", with: "_")
+        var string = lowercased()
+            .trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+            .replacingOccurrences(of: " ", with: "_")
+            .replacingOccurrences(of: "-", with: "_")
         if string.count > 40 {
             string = String(string.prefix(40))
         }
