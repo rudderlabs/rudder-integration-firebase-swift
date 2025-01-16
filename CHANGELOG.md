@@ -13,3 +13,7 @@
 ## Version - 1.2.0 - 2023-06-25
 ### Added
 - update firebase version.
+
+## Version - 1.3.0 - 2025-01-16
+### Added
+- update firebase event logic to handle hyphen.
