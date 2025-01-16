@@ -100,7 +100,7 @@ class RSFirebaseDestination: RSDestinationPlugin {
     
     func screen(message: ScreenMessage) -> ScreenMessage? {
         if !message.name.isEmpty {
-            var params: [String: Any]? = [AnalyticsParameterScreenName: message.name]
+            var params: [String: Any]? = [AnalyticsParameterScreenName: message.name.firebaseEvent]
             if let properties = message.properties {
                 insertCustomPropertiesData(params: &params, properties: properties)
             }
@@ -118,7 +118,11 @@ class RSFirebaseDestination: RSDestinationPlugin {
 
 extension String {
     var firebaseEvent: String {
-        var string = lowercased().trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).replacingOccurrences(of: " ", with: "_")
+        var string = lowercased()
+            .trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+            .replacingOccurrences(of: " ", with: "_")
+            .replacingOccurrences(of: "-", with: "_")
+        
         if string.count > 40 {
             string = String(string.prefix(40))
         }
