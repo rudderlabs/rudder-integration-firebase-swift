@@ -18,7 +18,13 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let events: [Events] = [Events(name: "Payment Info Entered", properties: [
+    let identify_events: [Events] = [Events(name: "User_id_1", properties: nil),
+                                     Events(name: "test_user_id", properties: ["ios": "Display"]),
+                                     Events(name: "Identity_Event_With_Hyphen_Name_Properties", properties: ["Hyphen-property": "value"])]
+    
+    let screen_events: [Events] = [Events(name: "Screen_1: _AppDelegate_1", properties: ["Custom_screen_property": "Custom_property_6"]), Events(name: "Screen-Event-With-Hyphen-Name-Properties", properties: ["Hyphen-property": "value"])]
+    
+    let track_events: [Events] = [Events(name: "Payment Info Entered", properties: [
         "payment_method": "payment_method_1",
         "coupon": "coupon_1",
         "currency": "INR",
@@ -204,11 +210,7 @@ class ViewController: UIViewController {
         "total": NSNumber(value: 125)
     ]), Events(name: "Custom_Track_Call", properties: [
         "Custom_track_value_1_askasakjaldjladjaljdaljdajdaldjaljladjladjaljdaljdaljd": "Custom_Track_Call_6"
-    ]), Events(name: "Screen_1: _AppDelegate_1", properties: [
-        "Custom_screen_property": "Custom_property_6"
-    ]), Events(name: "User_id_1", properties: nil), Events(name: "test_user_id", properties: [
-        "ios": "Display"
-    ])]
+    ]), Events(name: "Track-Event-With-Hyphen", properties: nil), Events(name: "Track event with hyphen properties", properties: ["key1": "value1", "KEY_2": 127, "KEY_3": true])]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -240,40 +242,77 @@ extension ViewController {
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Identify"
+        case 1:
+            return "Screen"
+        case 2:
+            return "Track"
+        default:
+            return nil
+        }
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        switch section {
+        case 0:
+            return identify_events.count
+        case 1:
+            return screen_events.count
+        case 2:
+            return track_events.count
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let item = events[indexPath.row]
+        
+        let section: Int = indexPath.section
+        let item = section == 0 ? identify_events[indexPath.row] :
+        (section == 1 ? screen_events[indexPath.row] : track_events[indexPath.row])
+        
         cell.textLabel?.text = item.name
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = events[indexPath.row]
+        
         let client: RSClient? = RSClient.sharedInstance()
-        switch indexPath.row {
-        case events.count - 1, events.count - 2:
+        
+        switch indexPath.section {
+        case 0:
+            let item = identify_events[indexPath.row]
             if let properties = item.properties {
                 client?.identify(item.name, traits: properties)
             } else {
                 client?.identify(item.name)
             }
-        case events.count - 3:
+            
+        case 1:
+            let item = screen_events[indexPath.row]
             if let properties = extractTraits(traits: item.properties) {
                 client?.screen(item.name, properties: properties)
             } else {
                 client?.screen(item.name)
             }
-        default:
+            
+        case 2:
+            let item = track_events[indexPath.row]
             if let properties = item.properties {
                 client?.track(item.name, properties: properties)
             } else {
                 client?.track(item.name)
             }
+            
+        default:
+            break
         }
     }
 }
